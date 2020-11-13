@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1081051369404",
+    "firebase_url": "https://cloud-base-4422.firebaseio.com",
+    "project_id": "cloud-base-4422",
+    "storage_bucket": "cloud-base-4422.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081051369404:android:87a99fa552738fd5a6e5b9",
+        "android_client_info": {
+          "package_name": "com.cloudy.cloud_base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081051369404-ob7g9aagdc1g0fmvcgakei7n4teipuoe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoZCvhRDxb5bz54wzB9JB6L0lYRpjNv8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081051369404-ob7g9aagdc1g0fmvcgakei7n4teipuoe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
