@@ -1,4 +1,5 @@
 import 'package:cloud_base/services/auth.dart';
+import 'package:cloud_base/shared/const.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -11,9 +12,11 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +39,15 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: [
               SizedBox(
                 height: 20,
               ),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Email'),
+                validator: (val) => val.isEmpty ? 'Enter an email' : null,
                 onChanged: (val) {
                   setState(() => email = val);
                 },
@@ -50,6 +56,9 @@ class _SignInState extends State<SignIn> {
                 height: 20,
               ),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Password'),
+                validator: (val) =>
+                    val.length < 6 ? 'Enter a Password longer than 6' : null,
                 obscureText: true,
                 onChanged: (val) {
                   setState(() => password = val);
@@ -60,14 +69,24 @@ class _SignInState extends State<SignIn> {
               ),
               RaisedButton(
                 onPressed: () async {
-                  print(email);
-                  print(password);
+                  if (_formKey.currentState.validate()) {
+                    print('valid');
+                    dynamic result =
+                        await _auth.signInWithEmailandPAssword(email, password);
+                    if (result == null) {
+                      setState(() => error = 'Invaid sign In Info');
+                    }
+                  }
                 },
                 color: Colors.green,
                 child: Text(
                   'sign in',
                   style: TextStyle(color: Colors.white),
                 ),
+              ),
+              Text(
+                error,
+                style: TextStyle(color: Colors.red, fontSize: 14),
               ),
             ],
           ),

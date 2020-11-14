@@ -1,4 +1,5 @@
 import 'package:cloud_base/services/auth.dart';
+import 'package:cloud_base/shared/const.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -45,6 +46,7 @@ class _RegisterState extends State<Register> {
                 height: 20,
               ),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter an email' : null,
                 onChanged: (val) {
                   setState(() => email = val);
@@ -54,6 +56,7 @@ class _RegisterState extends State<Register> {
                 height: 20,
               ),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Password'),
                 validator: (val) =>
                     val.length < 6 ? 'Enter a Password longer than 6' : null,
                 obscureText: true,
